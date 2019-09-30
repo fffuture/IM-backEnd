@@ -17,6 +17,16 @@ public interface FriendMapper {
 	
 	public void addFriend( @Param("weChatId")String weChatId, @Param("friendWeChatId")String friendWeChatId );
 	
+	
+	public void deleteFriend( @Param("weChatId")String weChatId, @Param("friendWeChatId")String friendWeChatId );
+	
+	public List<FriendEntity> queryFriend( @Param("weChatId")String weChatId, @Param("friendWeChatId")String friendWeChatId );
+	
+	public void modifyFriend( @Param("friendState")String friendState,@Param("weChatId")String weChatId, @Param("friendWeChatId")String friendWeChatId );
+	
+	public void modifyRemarks( @Param("remarks")String remarks,@Param("weChatId")String weChatId, @Param("friendWeChatId")String friendWeChatId );
+	
+	
 	/*public User findUser(String id);
 	
 	public User login( @Param("weChatId")String weChatId, @Param("password")String password );

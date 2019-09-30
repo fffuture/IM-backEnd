@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import com.xit.service.FriendService;
+import com.xit.service.GroupService;
 import com.xit.service.UserService;
 import com.xit.utils.SocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,16 @@ public class WebSocketConfig {
     public void setMessageService(FriendService friendService) {
     	SocketServer.friendService = friendService;
     }
-    @Autowired(required=false)
+   
     public void setUserService(UserService userService) {
     	SocketServer.userService = userService;
     }
+    
+    @Autowired(required=false)
+    public void setGroupService(GroupService groupService) {
+    	SocketServer.groupService = groupService;
+    }
+    
     
     
 }  

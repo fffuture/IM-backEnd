@@ -10,7 +10,15 @@ public class FriendEntity {
 	private String tag;
 	private String descript;
 	private String addTime;
-
+	private String friend;
+//	private String addSuccess;
+	
+//	public String getWeChatId() {
+//		return weChatId;
+//	}
+//	public void setWeChatId(String weChatId) {
+//		this.weChatId = weChatId;
+//	}
 	public String getFriendWeChatId() {
 		return friendWeChatId;
 	}
@@ -58,5 +66,11 @@ public class FriendEntity {
 	}
 	public void setAddTime(String addTime) {
 		this.addTime = addTime;
+	}
+	public String getFriend() {
+		return friend;
+	}
+	public void setFriend(String friend) {
+		this.friend = friend;
 	}
 }

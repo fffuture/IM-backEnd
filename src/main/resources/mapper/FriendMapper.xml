@@ -10,9 +10,25 @@
 		<result column="addTime" property="addTime"/>
 	</resultMap>
 	<select id="findFriendList" resultType="com.xit.entity.FriendEntity">	
-		select * from friendList,wechatUser where friendlist.friendWeChatId != #{weChatId} AND friendlist.weChatId = #{weChatId} AND wechatUser.weChatId = friendlist.friendWeChatId ORDER BY wechatUser.weChatId
+		select * from friendList,wechatUser where friendlist.friendWeChatId != #{weChatId} AND friendlist.weChatId = #{weChatId} AND wechatUser.weChatId = friendlist.friendWeChatId AND friendlist.friend = "friend"  ORDER BY wechatUser.weChatId
 	</select>
 	<insert id="addFriend">
 		insert into friendList(wechatID,friendWeChatId,remarks,friend) VALUES(#{weChatId}, #{friendWeChatId}, #{friendWeChatId}, "friend")
 	</insert>
+	
+	<delete id="deleteFriend">
+		DELETE from friendlist where wechatId = #{weChatId} and friendWeChatId = #{friendWeChatId}
+	</delete>
+	
+	<select id="queryFriend" resultType="com.xit.entity.FriendEntity">
+		select * from friendlist where wechatId = #{weChatId} and friendWeChatId = #{friendWeChatId}
+	</select>
+	
+	<update id="modifyFriend">
+		UPDATE friendlist SET friend = #{friendState} where weChatId = #{weChatId} and friendWeChatId = #{friendWeChatId}
+	</update>
+	
+	<update id="modifyRemarks">
+		update friendlist SET remarks = #{remarks} where weChatId = #{weChatId} and friendWeChatId = #{friendWeChatId}
+	</update>
 </mapper>

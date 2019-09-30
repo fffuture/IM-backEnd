@@ -30,6 +30,59 @@ public class FriendServiceImpl implements FriendService {
 		}
 		
 	}	
+	
+	@Override
+	public String deleteFriend(String weChatId, String friendWeChatId) {
+		System.out.println("add  weChatId"+weChatId+"   friendWeChatId"+friendWeChatId );
+		try{
+			friendMapper.deleteFriend(weChatId, friendWeChatId);
+			return "删除成功";
+		}catch( Exception e ) {
+			return e.toString();
+		}
+		
+	}
+
+	@Override
+	public Boolean queryFriend(String weChatId, String friendWeChatId,String type) {
+		List<FriendEntity> Friendlist = friendMapper.queryFriend(weChatId, friendWeChatId);
+		
+		if( "exitFriend".equalsIgnoreCase(type) ) {
+			return !Friendlist.isEmpty();
+		}
+		if( "friend".equalsIgnoreCase(type) ) {
+			if( "friend".equalsIgnoreCase(Friendlist.get(0).getFriend()) ) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public String modifyFriend(String friendState, String weChatId, String friendWeChatId) {
+		try{
+			friendMapper.modifyFriend(friendState,weChatId, friendWeChatId);
+			return "friend修改成功";
+		}catch( Exception e ) {
+			return e.toString();
+		}
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String modifyRemarks(String remarks, String weChatId, String friendWeChatId) {
+		try{
+			friendMapper.modifyRemarks(remarks,weChatId, friendWeChatId);
+			System.out.println("修改成功");
+			return "remarks修改成功";
+		}catch( Exception e ) {
+			return e.toString();
+		}
+	}
 
 	
 }

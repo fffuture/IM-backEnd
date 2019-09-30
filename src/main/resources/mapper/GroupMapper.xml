@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xit.mapper.GroupMapper">
+
+	<select id="queryMemberAll" resultType="com.xit.entity.GroupRelation">
+		select * from groupList where groupid = 1
+	</select>
+	
+	<select id="queryGroupId" resultType="java.lang.Integer">
+		select max(id) from `group`
+	</select>
+	
+	<insert id="createGroup">
+		INSERT into `group`(name,creator) values( #{name} ,#{creator} )
+	</insert>
+	
+	<insert id="addMember">
+		INSERT into grouplist(groupId,member) values( #{groupId} ,#{member})
+	</insert>
+	
+	
+	
+</mapper>
